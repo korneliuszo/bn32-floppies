@@ -1,0 +1,14 @@
+[disks]
+1=., "Mouse Driver",disk1
+
+[pointing.device]
+;
+;Note:the VMD field may contain multiple VXD's in the form "x:*vmd,2:1vmd.386".
+;     Please note,however,that if multiple VXD's are specified in the VMD field
+;     they must be surrounded by double quotes (").
+;
+;profile =  mouse driver,   Mouse description,		       VMD,	Optional work section
+;
+mouse1 = 1:mouse1.drv, "Mouse on Serial Port 1,PS/2 Mouse Port ", 3:*vmd
+mouse2 = 1:mouse2.drv, "Mouse on Serial Port 2 ", 3:*vmd
+mouse3 = 1:mouse1.drv, "Mouse on Bus Card ", 3:*vmd

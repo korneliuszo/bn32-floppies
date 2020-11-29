@@ -1,0 +1,92 @@
+; ===========================================
+;  Chic mouse for windows 95 setup
+; =====    (lasted modify 1996.1.3 )   ======
+; (C) Copyright Chic Technology Corp.
+;		 All Rights Reserved.
+; ===========================================
+
+[Version]
+Signature=$CHIC$
+Class=Mouse
+Provider=%String0%
+
+[ClassInstall]
+
+[DestinationDirs]
+DefaultDestDir=11
+
+[Manufacturer]
+%String1%=MS
+
+[MS]
+%String2%=Msmou,
+%String4%=Bumou,
+%String5%=Psmou,
+
+[Msmou]
+CopyFiles=Chicmou.Copy
+AddReg=VMOUSE.AddReg
+DelReg=Prev.DelReg
+UpdateInis=Msmou.Ini
+
+
+[Bumou]
+CopyFiles=Chicmou.Copy
+AddReg=VMOUSE.AddReg
+DelReg=Prev.DelReg
+UpdateInis=Bumou.Ini
+
+[Psmou]
+CopyFiles=Chicmou.Copy
+AddReg=VMOUSE.AddReg
+DelReg=Prev.DelReg
+UpdateInis=Psmou.Ini
+
+[Chicmou.Copy]
+chmouse.vxd
+chmouse.drv
+
+[VMOUSE.AddReg]
+HKR,,DevLoader,0,*vmouse
+HKR,,MouseDriver,0,chmouse.vxd
+
+[Prev.DelReg]
+HKR,,DevLoader,0,
+HKR,,MouseDriver,0,
+
+[Msmou.Ini]
+system.ini,boot.description,,"mouse.drv=%Msmou.Desc%",0
+system.ini,boot,,"mouse.drv=chmouse.drv",0
+system.ini,386Enh,,"mouse=*vmouse ,chmouse.vxd",0
+
+
+[Bumou.Ini]
+system.ini,boot.description,,"mouse.drv=%Bumou.Desc%",0
+system.ini,boot,,"mouse.drv=chmouse.drv",0
+system.ini,386Enh,,"mouse=*vmouse ,chmouse.vxd",0
+
+[Psmou.Ini]
+system.ini,boot.description,,"mouse.drv=%Psmou.Desc%",0
+system.ini,boot,,"mouse.drv=chmouse.drv",0
+system.ini,386Enh,,"mouse=*vmouse ,chmouse.vxd",0
+
+[ControlFlags]
+
+[SourceDisksNames]
+1=%ChMouDisk%,,1
+
+[SourceDisksFiles]
+chmouse.vxd=1
+chmouse.drv=1
+
+[Strings]
+String0="CHIC "
+String1="Chic Tech"
+String2="Chic mouse on Serial Mouse "
+String4="Chic mouse on Bus Card Mouse"
+String5="Chic mouse on PS/2 Mouse"
+Msmou.Desc="Chic mouse on Serial Mouse "
+Bumou.Desc="Chic mouse on Bus Card Mouse"
+Psmou.Desc="Chic mouse on PS/2 Mouse"
+ChMouDisk="CHIC Windows 95 Mouse Driver Disk"
+
