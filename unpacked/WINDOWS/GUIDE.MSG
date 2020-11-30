@@ -1,0 +1,73 @@
+'This file includes all of the text used by the Guide engine itself, such as error messages and button labels:
+
+'Version number of the engine this OLG is authored for:
+1.11
+
+'Logo file to show:
+C:\CANON\GUIDE\C_LOGO.BMP
+
+'Labels for function keys:
+&Top Menu
+&Up
+&Back
+&Forward
+&Glossary
+&Print
+&Search
+&Help
+E&xit
+
+'Messages and other labels:
+
+'About box:
+Loading Canon On-line Guide...
+Canon On-line Guide
+
+'Print dialog box:
+Default Printer:
+Port:
+Current Topic:
+Current Step:
+All Topics in Guide
+Font:
+OK
+Cancel
+&Setup...
+Print
+
+'Search window:
+&Text to Search for:
+Search
+Topic Titles &Only
+&All Text
+Topics:
+&Search
+&Close
+&Go To
+Sho&w All
+Search
+
+'Printing window:
+Printing
+Printing...
+
+'Messages:
+Topic not found.
+Enter text to be searched for.
+Text not found.
+Picture not found.
+Bad template number
+Hotspot file not found.
+Error in reading hotspot file
+Could not load top menu.  Quit.
+Could not load pictures for top menu.
+On-line Guide file not found.
+The default printer has been changed.  Exit and restart the On-line Guide to be able to print on the new default printer.
+There is a problem with printing.  Make sure that you have selected a default printer using the 'Printers' icon of Control Panel and that the printer is on-line.
+Select On-line Guide File.
+On-line Guide (*.olg)|*.olg|All Files (*.*)|*.*|
+Select one of the Following:
+(256-color Mode)
+(16-color Mode)
+\bNOTE:\b You are currently running in a screen mode that shows smaller than 256 colors.  For optimum viewing of the pictures in this guide, we suggest you switch to a display driver that supports 256 colors.  If your system supports that many colors, you can switch using the |Windows Setup|!RUN setup.exe| utility  (Within Setup, select "Change System Settings..." under the "Options" menu).
+Could not run the program: 
