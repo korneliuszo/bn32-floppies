@@ -1,0 +1,10 @@
+[disks]
+d =. ,"Canon Disk #1",disk1 
+6 =. ,"Microsoft Windows 3.1 Disk #6",disk6
+
+[io.device]
+d:MBJ2024.DRV,6:UNIDRV.DLL,"Built-in MBJ-20 (X24E/BJ-130e)","DEVICESPECIFIC"
+
+[io.dependent]
+   MBJ2024.drv= 6:unidrv.hlp
+

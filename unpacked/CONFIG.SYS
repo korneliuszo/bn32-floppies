@@ -1,0 +1,34 @@
+DEVICE=C:\DOS\HIMEM.SYS
+DEVICE=C:\DOS\EMM386.EXE RAM X=C800-CFFF
+BUFFERS=30,0
+FILES=30
+DOS=UMB
+LASTDRIVE=E
+FCBS=4,0
+STACKS=9,256
+DEVICEHIGH /L:1,12048 =C:\DOS\SETVER.EXE
+DOS=HIGH
+COUNTRY=044,,C:\DOS\COUNTRY.SYS
+DEVICE=C:\DOS\DISPLAY.SYS CON=(EGA,,1)
+DEVICEHIGH /L:0 =C:\DOS\POWER.EXE
+DEVICEHIGH /L:1,11152 =C:\IBMVESA\VESA.EXE
+SHELL=C:\DOS\COMMAND.COM /P /E:256
+
+rem / The following lines are required to use IC cards.                /
+rem / To use I/O cards and SRAM cards, no changes are necessary        /
+rem / to any of these lines.                                           /
+rem / To use ATA cards, remove "rem" from the PCMATA.SYS line.         /
+rem / To use FLASH cards, remove "rem" from the MS-FLASH.SYS line.     /
+rem / These cards are avilable when the system is rebooted.            /
+rem / To increase free area in the conventional memory when you do not /
+rem / need to use IC cards, start each line with "rem".                /
+rem / For further information on IC cards, refer to ICCARD.WRI         /
+rem / and ICADD.WRI.                                                   /
+
+DEVICE=C:\CANON\ICCARD\PCMSS.EXE
+DEVICE=C:\CANON\ICCARD\PCMCS.EXE /WAIT=12 /ADDR=CC /IRQ=10 /FLASH
+DEVICE=C:\CANON\ICCARD\PCMRMAN.EXE /XIRQ=B
+DEVICE=C:\CANON\ICCARD\PCMSCD.EXE /COM=4 /RS=4
+DEVICE=C:\CANON\ICCARD\PCMFFCS.EXE /BASE=C8 /SIZE=16 /QUEUE=1 /PART=1
+rem DEVICE=C:\CANON\ICCARD\PCMATA.SYS /0 /1
+rem DEVICE=C:\CANON\ICCARD\MS-FLASH.SYS
