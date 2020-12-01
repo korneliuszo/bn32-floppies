@@ -1,0 +1,176 @@
+;==============================================================================
+;
+; NAME: OEMSETUP.INF (Windows 3.1)
+;
+; DESCRIPTION:
+;    Windows 256 colors display driver setup file for installation of
+;    the NoteJet. This driver displays 256 colors on Windows 3.1. 
+;    This file is utilized by the SETUP.EXE in Windows 3.1.
+;
+; CHANGE HISTORY:
+;
+;    93/04/20 - Initial Release
+;    93/08/31 - Add
+;    93/10/24 - Add
+;    93/11/16 - Add
+;    93/12/14 - change WD90C24A
+;==============================================================================
+
+[disks]
+1 =. ,"Microsoft Windows 3.1 Disk #1",disk1
+2 =. ,"Microsoft Windows 3.1 Disk #2",disk2
+3 =. ,"Microsoft Windows 3.1 Disk #3",disk3
+4 =. ,"Microsoft Windows 3.1 Disk #4",disk4
+5 =. ,"Microsoft Windows 3.1 Disk #5",disk5
+6 =. ,"Microsoft Windows 3.1 Disk #6",disk6
+;X =. ,"WD90C24A Video Features Diskette", "WD90C24A"
+
+; Translate diskette label to each country language.
+X =. ,"WD90C24A Video Features Diskette", "WD90C24A"
+
+[display]
+;=======================================================================
+; The string following the driver description specifies the screen
+; resolution. It is used ONLY to match the system and OEM character sets
+; with the display selection.
+;=======================================================================
+;PROF  = <DRIVER>,       <DESCRIPTION OF DRIVER>,                        <RESOLUTION>,  <286 GRABBER>, <LOGO CODE>,   <VDD>,        <386GRABR>,  , <LOGO DATA>,   <EXECUTION SECTION>
+;-----   ------------- ------------------------------------------------- -------------- -------------- -------------- ------------- ------------ - -------------- -------------------
+;hb640s = X:vgac24.drv, "WD90C24A  640x480 256 colors small fonts",  "100,96,96",   X:vgac24.2gr,  X:vgalogo.lgo, X:vddc24.386, X:v7vga.3gr, , X:vgalogo.rle, LO256S
+;hb600s = X:vgac24.drv, "WD90C24A  800x600 256 colors small fonts",  "100,96,96",   X:vgac24.2gr,  X:vgalogo.lgo, X:vddc24.386, X:v7vga.3gr, , X:vgalogo.rle, MI256S
+;hb768s = X:vgac24.drv, "WD90C24A 1024x768 256 colors small fonts",  "100,96,96",   X:vgac24.2gr,  X:vgalogo.lgo, X:vddc24.386, X:v7vga.3gr, , X:vgalogo.rle, HI256S
+;hb640l = X:vgac24.drv, "WD90C24A  640x480 256 colors large fonts",  "100,120,120", X:vgac24.2gr,  X:vgalogo.lgo, X:vddc24.386, X:v7vga.3gr, , X:vgalogo.rle, LO256L
+;hb600l = X:vgac24.drv, "WD90C24A  800x600 256 colors large fonts",  "100,120,120", X:vgac24.2gr,  X:vgalogo.lgo, X:vddc24.386, X:v7vga.3gr, , X:vgalogo.rle, MI256L
+;hb768l = X:vgac24.drv, "WD90C24A 1024x768 256 colors large fonts",  "100,120,120", X:vgac24.2gr,  X:vgalogo.lgo, X:vddc24.386, X:v7vga.3gr, , X:vgalogo.rle, HI256L
+
+; Translate "DESCRIPTION OF DRIVER" field to each country language.
+hb640s = X:vgac24.drv, "WD90C24A  640x480 256 colors small fonts",  "100,96,96",   X:vgac24.2gr,  X:vgalogo.lgo, X:vddc24.386, X:v7vga.3gr, , X:vgalogo.rle, LO256S
+hb600s = X:vgac24.drv, "WD90C24A  800x600 256 colors small fonts",  "100,96,96",   X:vgac24.2gr,  X:vgalogo.lgo, X:vddc24.386, X:v7vga.3gr, , X:vgalogo.rle, MI256S
+hb768s = X:vgac24.drv, "WD90C24A 1024x768 256 colors small fonts",  "100,96,96",   X:vgac24.2gr,  X:vgalogo.lgo, X:vddc24.386, X:v7vga.3gr, , X:vgalogo.rle, HI256S
+hb640l = X:vgac24.drv, "WD90C24A  640x480 256 colors large fonts",  "100,120,120", X:vgac24.2gr,  X:vgalogo.lgo, X:vddc24.386, X:v7vga.3gr, , X:vgalogo.rle, LO256L
+hb600l = X:vgac24.drv, "WD90C24A  800x600 256 colors large fonts",  "100,120,120", X:vgac24.2gr,  X:vgalogo.lgo, X:vddc24.386, X:v7vga.3gr, , X:vgalogo.rle, MI256L
+hb768l = X:vgac24.drv, "WD90C24A 1024x768 256 colors large fonts",  "100,120,120", X:vgac24.2gr,  X:vgalogo.lgo, X:vddc24.386, X:v7vga.3gr, , X:vgalogo.rle, HI256L
+
+; copy these fonts depending on the 386 grabber being used
+
+[V7VGA.3gr]
+X:CGA40WOA.FON,X:CGA40850.FON
+X:CGA80WOA.FON,X:CGA80850.FON
+X:EGA40WOA.FON,X:EGA40850.FON
+X:EGA80WOA.FON,X:EGA80850.FON
+
+;==============================================================================
+; Below are the sections to be executed based on the type of display
+; setup selected from the SETUP.EXE selection menu. These sections are
+; executed based on which profile line was invoked via SETUP.EXE.
+; These profile lines have been defined above and the parameters
+; which match the below section are labeled <EXECUTION SECTION>.
+;
+; The format of the below display modes sections abide by the following
+; syntax:
+;
+; <x:File>, <Destination>, <INI File>, <Section>, <OldLine>, <NewLine>
+;
+; x:File       = File on setup disk x: to be copied to destination.
+; Destination  = 0: for Windows root directory, 0:SYSTEM for Windows
+;                system directory.
+; INI File     = .INI to be modified or created.
+; Section      = Section of INI File to be modified or created.
+; OldLine      = Old text line to be removed from Section of INI File.
+; NewLine      = New text line to be written to Section of INI File.
+;==============================================================================
+[LO256S]
+,,SYSTEM.INI, VGAC24, "Resolution=",     "Resolution=640x480"
+,,SYSTEM.INI, VGAC24, "ResourceSize=",   "ResourceSize=Small"
+,,SYSTEM.INI, VGAC24, "HWCursor=",       "HWCursor=Yes"
+,,SYSTEM.INI, VGAC24, "FontCache=",      "FontCache=Yes"
+,,SYSTEM.INI, VGAC24, "HWLineDraw=",     "HWLineDraw=Yes"
+,,SYSTEM.INI, VGAC24, "HostBitBlt=",     "HostBitBlt=No"
+,,SYSTEM.INI, 386Enh, "EnableVESABIOS=", "EnableVESABIOS=Yes"
+
+[MI256S]
+,,SYSTEM.INI, VGAC24, "Resolution=",     "Resolution=800x600"
+,,SYSTEM.INI, VGAC24, "ResourceSize=",   "ResourceSize=Small"
+,,SYSTEM.INI, VGAC24, "HWCursor=",       "HWCursor=Yes"
+,,SYSTEM.INI, VGAC24, "FontCache=",      "FontCache=Yes"
+,,SYSTEM.INI, VGAC24, "HWLineDraw=",     "HWLineDraw=Yes"
+,,SYSTEM.INI, VGAC24, "HostBitBlt=",     "HostBitBlt=No"
+,,SYSTEM.INI, 386Enh, "EnableVESABIOS=", "EnableVESABIOS=Yes"
+
+[HI256S]
+,,SYSTEM.INI, VGAC24, "Resolution=",     "Resolution=1024x768"
+,,SYSTEM.INI, VGAC24, "ResourceSize=",   "ResourceSize=Small"
+,,SYSTEM.INI, VGAC24, "HWCursor=",       "HWCursor=Yes"
+,,SYSTEM.INI, VGAC24, "FontCache=",      "FontCache=Yes"
+,,SYSTEM.INI, VGAC24, "HWLineDraw=",     "HWLineDraw=Yes"
+,,SYSTEM.INI, VGAC24, "HostBitBlt=",     "HostBitBlt=No"
+,,SYSTEM.INI, 386Enh, "EnableVESABIOS=", "EnableVESABIOS=Yes"
+
+[LO256L]
+,,SYSTEM.INI, VGAC24, "Resolution=",     "Resolution=640x480"
+,,SYSTEM.INI, VGAC24, "ResourceSize=",   "ResourceSize=Large"
+,,SYSTEM.INI, VGAC24, "HWCursor=",       "HWCursor=Yes"
+,,SYSTEM.INI, VGAC24, "FontCache=",      "FontCache=Yes"
+,,SYSTEM.INI, VGAC24, "HWLineDraw=",     "HWLineDraw=Yes"
+,,SYSTEM.INI, VGAC24, "HostBitBlt=",     "HostBitBlt=No"
+,,SYSTEM.INI, 386Enh, "EnableVESABIOS=", "EnableVESABIOS=Yes"
+
+[MI256L]
+,,SYSTEM.INI, VGAC24, "Resolution=",     "Resolution=800x600"
+,,SYSTEM.INI, VGAC24, "ResourceSize=",   "ResourceSize=Large"
+,,SYSTEM.INI, VGAC24, "HWCursor=",       "HWCursor=Yes"
+,,SYSTEM.INI, VGAC24, "FontCache=",      "FontCache=Yes"
+,,SYSTEM.INI, VGAC24, "HWLineDraw=",     "HWLineDraw=Yes"
+,,SYSTEM.INI, VGAC24, "HostBitBlt=",     "HostBitBlt=No"
+,,SYSTEM.INI, 386Enh, "EnableVESABIOS=", "EnableVESABIOS=Yes"
+
+[HI256L]
+,,SYSTEM.INI, VGAC24, "Resolution=",     "Resolution=1024x768"
+,,SYSTEM.INI, VGAC24, "ResourceSize=",   "ResourceSize=Large"
+,,SYSTEM.INI, VGAC24, "HWCursor=",       "HWCursor=Yes"
+,,SYSTEM.INI, VGAC24, "FontCache=",      "FontCache=Yes"
+,,SYSTEM.INI, VGAC24, "HWLineDraw=",     "HWLineDraw=Yes"
+,,SYSTEM.INI, VGAC24, "HostBitBlt=",     "HostBitBlt=No"
+,,SYSTEM.INI, 386Enh, "EnableVESABIOS=", "EnableVESABIOS=Yes"
+
+
+;=======================================================================
+; Font Installation Section
+;=======================================================================
+[sysfonts]
+X:vgasys.fon,  "VGA (640x480) resolution System Font",     "100,96,96"
+X:8514sys.fon, "8514/a (1024x768) resolution System Font", "100,120,120"
+
+[fixedfonts]
+X:vgafix.fon,  "VGA (640x480) resolution Fixed System Font",     "100,96,96"
+X:8514fix.fon, "8514/a (1024x768) resolution Fixed System Font", "100,120,120"
+
+[oemfonts]
+X:vgaoem.fon,  "VGA (640x480) resolution Terminal Font (USA/Europe)",     "100,96,96",1
+X:8514oem.fon, "8514/a (1024x768) resolution Terminal Font (USA/Europe)", "100,120,120",1
+
+
+;=======================================================================
+; Install only the fonts that apply to the resolution selected on the
+; display menu.
+;=======================================================================
+[fonts]
+X:SSERIFE.FON, "MS Sans Serif 8,10,12,14,18,24 (VGA res)",    "100,96,96"
+X:SSERIFF.FON, "MS Sans Serif 8,10,12,14,18,24 (8514/a res)", "100,120,120"
+
+X:COURE.FON, "Courier 10,12,15 (VGA res)",    "100,96,96"
+X:COURF.FON, "Courier 10,12,15 (8514/a res)", "100,120,120"
+
+X:SERIFE.FON, "MS Serif 8,10,12,14,18,24 (VGA res)",    "100,96,96"
+X:SERIFF.FON, "MS Serif 8,10,12,14,18,24 (8514/a res)", "100,120,120"
+
+X:SYMBOLE.FON, "Symbol 8,10,12,14,18,24 (VGA res)",    "100,96,96"
+X:SYMBOLF.FON, "Symbol 8,10,12,14,18,24 (8514/a res)", "100,120,120"
+
+X:SMALLE.FON, "Small Fonts (VGA res)",    "100,96,96"
+X:SMALLF.FON, "Small Fonts (8514/a res)", "100,120,120"
+
+X:ROMAN.FON,  "Roman (Plotter)",  "CONTINUOUSSCALING"
+X:SCRIPT.FON, "Script (Plotter)", "CONTINUOUSSCALING"
+X:MODERN.FON, "Modern (Plotter)", "CONTINUOUSSCALING"
+
